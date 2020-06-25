@@ -22,19 +22,19 @@ BrushedMotor rightMotor(forward_b, backward_b, motor_b);
 DifferentialControl control(leftMotor, rightMotor);
 SimpleCar car(control);
 
-#define motor_speed 20
-#define motor_turning_speed 30
-#define motor_angle 50
+#define motor_speed 15
+#define motor_turning_speed 40
+#define motor_angle 60
 
 // command from bluetooth
 char command;
 
 // distance sensors
-#define max_distance 30
+#define max_distance 25
 #define max_side_dist 20
 
-#define left_echo_pin 30
-#define left_trig_pin 28
+#define left_echo_pin 12
+#define left_trig_pin 13
 NewPing left_sensor(left_trig_pin, left_echo_pin, 300);
 
 #define center_echo_pin 29
@@ -45,11 +45,6 @@ NewPing center_sensor(center_trig_pin, center_echo_pin, 300);
 #define right_trig_pin 22
 NewPing right_sensor(right_trig_pin, right_echo_pin, 300);
 
-
-// leds
-#define red_led 23
-#define green_led 25
-#define blue_led 27
 
 unsigned int start = 0;
 
@@ -98,17 +93,11 @@ void backward_right() {
   // car.setAngle(0);
 }
 
-void RGB_color(int red_light_value, int green_light_value, int blue_light_value) {
-  analogWrite(red_led, red_light_value);
-  analogWrite(green_led, green_light_value);
-  analogWrite(blue_led, blue_light_value);
-}
 
 void setup() {
   Serial.begin(115200);
   BTSerial.begin(9600);
 
-  RGB_color(0, 255, 0);
 }
 
 
@@ -133,21 +122,20 @@ void loop() {
 
   if (start == 1) {
     if (left_dist <= max_side_dist || center_dist <= max_distance || right_dist <= max_side_dist) {
-      RGB_color(155, 0, 0);
 
       if (left_dist <= max_side_dist && center_dist <= max_distance && right_dist <= max_side_dist) {
         backward();
-        delay(300);
+        delay(400);
       }
       else if (left_dist < right_dist) {
         backward_left();
-        delay(400);
+        delay(500);
         right();
         delay(300);
       }
       else if (left_dist >= right_dist) {
         backward_right();
-        delay(400);
+        delay(500);
         left();
         delay(300);
       }
@@ -155,7 +143,6 @@ void loop() {
       car.setAngle(0);
     }
     else {
-      RGB_color(0, 155, 0);
       forward();
     }
   }
