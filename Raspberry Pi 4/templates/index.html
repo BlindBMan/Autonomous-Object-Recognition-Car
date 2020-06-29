@@ -2,60 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>test</title>
+    <script src="{{ url_for('static', filename='buttons.js') }}"></script>
 
-    <script>
-        window.onload =  () => {
-
-            // poti procesa raspunsul de la ruta daca ai unul
-            // daca nu poti omite asta
-            {#xhr.onreadystatechange = function() { // se apeleaza dupa apelarea rutei#}
-            {#    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {#}
-            {#        console.log(this.response); #}
-            {#    }#}
-            {# } #}
-
-            document.getElementById('leftBtn').addEventListener('click', () => {
-
-                let left = new XMLHttpRequest();
-                left.open("GET", 'http://127.0.0.1:5000/left', true);
-                left.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                left.send();
-            }) ;
-
-            document.getElementById('rightBtn').addEventListener('click', () => {
-
-                let right = new XMLHttpRequest();
-                right.open("GET", 'http://127.0.0.1:5000/right', true);
-                right.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                right.send();
-
-            }) ;
-
-            document.getElementById('forwardBtn').addEventListener('click', () => {
-                let forward = new XMLHttpRequest();
-                forward.open("GET", 'http://127.0.0.1:5000/forward', true);
-                forward.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                forward.send();
-
-            }) ;
-
-            document.getElementById('backwardBtn').addEventListener('click', () => {
-                let backward = new XMLHttpRequest();
-                backward.open("GET", 'http://127.0.0.1:5000/backward', true);
-                backward.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                backward.send();
-
-            });
-        }
-    </script>
+    <title>Video feed</title>
 </head>
 <body>
+    <h1>
+        Video feed
+    </h1>
 
-<button id="leftBtn">Left</button>
-<button id="rightBtn">Right</button>
-<button id="forwardBtn">Forward</button>
-<button id="backwardBtn">Backward</button>
+    <img id="feed" src="{{ url_for('video_feed') }}" alt="video feed" />
 
+    <button id="leftBtn">Left</button>
+    <button id="rightBtn">Right</button>
+    <button id="forwardBtn">Forward</button>
+    <button id="backwardBtn">Backward</button>
 </body>
 </html>
