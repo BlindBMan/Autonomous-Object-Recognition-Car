@@ -47,6 +47,7 @@ NewPing right_sensor(right_trig_pin, right_echo_pin, 300);
 
 
 unsigned int start = 0;
+unsigned int found = 0;
 
 
 void forward() {
@@ -93,11 +94,18 @@ void backward_right() {
   // car.setAngle(0);
 }
 
+void found_movement() {
+  car.setAngle(90);
+  car.setSpeed(motor_turning_speed);
+  delay(1000);
+  car.setSpeed(0);
+  car.setAngle(0);
+}
+
 
 void setup() {
   Serial.begin(115200);
   BTSerial.begin(9600);
-
 }
 
 
@@ -114,13 +122,18 @@ void loop() {
 
     if (command == 'S')
       start = 1;
-    if (command == 'T') {
+    else if (command == 'T') {
       start = 0;
       car.setSpeed(0);
     }
+    else if (command == 'X') {
+      found = 1;
+      found_movement();
+    }
+    
   }
 
-  if (start == 1) {
+  if (start == 1 && found == 0) {
     if (left_dist <= max_side_dist || center_dist <= max_distance || right_dist <= max_side_dist) {
 
       if (left_dist <= max_side_dist && center_dist <= max_distance && right_dist <= max_side_dist) {
