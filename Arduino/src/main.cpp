@@ -52,6 +52,7 @@ NewPing right_sensor(right_trig_pin, right_echo_pin, 300);
 #define blue_led 27
 
 unsigned int start = 0;
+unsigned int found = 0;
 
 
 void forward() {
@@ -98,17 +99,19 @@ void backward_right() {
   // car.setAngle(0);
 }
 
-void RGB_color(int red_light_value, int green_light_value, int blue_light_value) {
-  analogWrite(red_led, red_light_value);
-  analogWrite(green_led, green_light_value);
-  analogWrite(blue_led, blue_light_value);
+
+void found_movement() {
+  car.setAngle(90);
+  car.setSpeed(motor_turning_speed);
+  delay(1000);
+  car.setSpeed(0);
+  car.setAngle(0);
 }
+
 
 void setup() {
   Serial.begin(115200);
   BTSerial.begin(9600);
-
-  RGB_color(0, 255, 0);
 }
 
 
@@ -125,15 +128,19 @@ void loop() {
 
     if (command == 'S')
       start = 1;
-    if (command == 'T') {
+    else if (command == 'T') {
       start = 0;
       car.setSpeed(0);
     }
+    else if (command == 'X') {
+      found = 1;
+      found_movement();
+    }
+    
   }
 
-  if (start == 1) {
+  if (start == 1 && found == 0) {
     if (left_dist <= max_side_dist || center_dist <= max_distance || right_dist <= max_side_dist) {
-      RGB_color(155, 0, 0);
 
       if (left_dist <= max_side_dist && center_dist <= max_distance && right_dist <= max_side_dist) {
         backward();
@@ -155,7 +162,6 @@ void loop() {
       car.setAngle(0);
     }
     else {
-      RGB_color(0, 155, 0);
       forward();
     }
   }
