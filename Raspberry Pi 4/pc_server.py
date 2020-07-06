@@ -3,7 +3,6 @@ import requests
 from io import BytesIO
 from PIL import Image
 import time
-import matplotlib.pyplot as plt
 import numpy as np
 from darkflow.net.build import TFNet
 
@@ -21,22 +20,37 @@ def send_signal():
     requests.get('http://192.168.1.5:5000/found', timeout=5)
 
 
-while True:
-    r = requests.get('http://192.168.1.2:5000/image.jpg', timeout=5)
-    curr_img = Image.open(BytesIO(r.content))
-    curr_img_cv2 = cv2.cvtColor(np.array(curr_img), cv2.COLOR_RGB2BGR)
+def main():
+    obj_list = open('labels.txt', 'r').read().split('\n')
+    subm = requests.get('http://127.0.0.1:5000/submit', timeout=5)
+    while subm.status_code != 200:
+        time.sleep(1)
+        subm = requests.get('http://127.0.0.1:5000/submit', timeout=5)
+    txt = subm.text
+    target = [i for i in obj_list if txt.find(i) > 0][0]
+    obj_detect(target)
 
-    result = tfnet.return_predict(curr_img_cv2)
-    if len(result) > 0:
-        sorted_result = sorted(result, key=lambda i: i['confidence'], reverse=True)
-        if sorted_result[0]['confidence'] > tresh:
-            print(sorted_result[0]['label'])
 
-        if sorted_result[0]['label'] == 'book':
-            send_signal()
-            break
+def obj_detect(target):
+    found = 0
+    while found != 1:
+        r = requests.get('http://192.168.1.2:5000/image.jpg', timeout=5)
+        if r.status_code == 200:
+            curr_img = Image.open(BytesIO(r.content))
+            curr_img_cv2 = cv2.cvtColor(np.array(curr_img), cv2.COLOR_RGB2BGR)
 
-    # plt.imshow(curr_img)
-    # plt.show()
+            result = tfnet.return_predict(curr_img_cv2)
+            if len(result) > 0:
+                sorted_result = sorted(result, key=lambda i: i['confidence'], reverse=True)
+                if sorted_result[0]['confidence'] > tresh:
+                    print(sorted_result[0]['label'])
 
-    time.sleep(2)
+                if sorted_result[0]['label'] == target:
+                    send_signal()
+                    found = 1
+
+        time.sleep(2)
+
+
+if __name__ == '__main__':
+    main()

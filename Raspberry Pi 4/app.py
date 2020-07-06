@@ -1,9 +1,13 @@
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, Response, request
+from obj_form import ObjForm
 from pi_camera import Camera
 import serial
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'scrtkey'
 # pipe = serial.Serial('/dev/rfcomm0', 9600)
+
+obj_to_find = None
 
 
 def gen_img(camera):
@@ -19,9 +23,24 @@ def gen2(camera):
         yield frame
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    global obj_to_find
+    form = ObjForm()
+    if form.is_submitted():
+        obj_to_find = request.form
+        return render_template('autonomous.html', obj_to_find=obj_to_find)
+    return render_template('index.html', form=form)
+
+
+@app.route('/submit', methods=['GET'])
+def submit():
+    return render_template('autonomous.html', obj_to_find=obj_to_find)
+
+
+@app.route('/manual')
+def manual():
+    return render_template('manual.html')
 
 
 @app.route('/video_feed')
@@ -34,6 +53,13 @@ def video_feed():
 def image():
     return Response(gen2(Camera()),
                     mimetype='image/jpeg')
+
+
+@app.route('/start/')
+def start():
+    print('start')
+    # pipe.write('S')
+    return '0'
 
 
 @app.route('/found/')
@@ -68,4 +94,4 @@ def backward():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', threaded=True)
+    app.run(threaded=True)

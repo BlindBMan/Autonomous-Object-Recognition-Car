@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="{{ url_for('static', filename='autonomous.js') }}"></script>
+
+    <title>Autonomous mode</title>
+</head>
+<body>
+    <h1>
+        Video feed
+    </h1>
+
+<!--    <img id="feed" src=" url_for('video_feed') " alt="video feed" />-->
+    <button id="startBtn">Start</button>
+    <button id="stopBtn">Stop</button>
+
+    <p id="target" style="visibility: hidden">{{obj_to_find.get('obj')}}</p>
+</body>
+</html>
