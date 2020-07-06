@@ -3,7 +3,6 @@ import requests
 from io import BytesIO
 from PIL import Image
 import time
-import matplotlib.pyplot as plt
 import numpy as np
 from darkflow.net.build import TFNet
 

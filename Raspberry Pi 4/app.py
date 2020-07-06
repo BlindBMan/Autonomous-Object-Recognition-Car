@@ -1,7 +1,7 @@
 from flask import Flask, render_template, Response, request
 from obj_form import ObjForm
-# from pi_camera import Camera
-# import serial
+from pi_camera import Camera
+import serial
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'scrtkey'
@@ -43,16 +43,16 @@ def manual():
     return render_template('manual.html')
 
 
-# @app.route('/video_feed')
-# def video_feed():
-#     return Response(gen_img(Camera()),
-#                     mimetype='multipart/x-mixed-replace; boundary=frame')
-#
-#
-# @app.route('/image.jpg')
-# def image():
-#     return Response(gen2(Camera()),
-#                     mimetype='image/jpeg')
+@app.route('/video_feed')
+def video_feed():
+    return Response(gen_img(Camera()),
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
+
+
+@app.route('/image.jpg')
+def image():
+    return Response(gen2(Camera()),
+                    mimetype='image/jpeg')
 
 
 @app.route('/start/')
