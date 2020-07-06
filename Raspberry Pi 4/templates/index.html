@@ -2,21 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="{{ url_for('static', filename='buttons.js') }}"></script>
-
-    <title>Video feed</title>
+    <title>Home</title>
 </head>
 <body>
-    <h1>
-        Video feed
-    </h1>
-
-    <img id="feed" src="{{ url_for('video_feed') }}" alt="video feed" />
+    <a href="{{ url_for('manual') }}"> Manual mode</a>
+    <br />
     <br />
 
-    <button id="leftBtn">Left</button>
-    <button id="rightBtn">Right</button>
-    <button id="forwardBtn">Forward</button>
-    <button id="backwardBtn">Backward</button>
+    <p>Autonomous mode</p>
+    <form action="" method="post">
+        <p>
+            {{ form.obj.label }} <br />
+            {{ form.obj(size=2) }}
+        </p>
+        <p>
+            {{ form.submit }}
+        </p>
+    </form>
+
 </body>
 </html>
