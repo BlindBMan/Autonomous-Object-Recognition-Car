@@ -7,6 +7,8 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'scrtkey'
 # pipe = serial.Serial('/dev/rfcomm0', 9600)
 
+obj_to_find = None
+
 
 def gen_img(camera):
     while True:
@@ -23,11 +25,17 @@ def gen2(camera):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    global obj_to_find
     form = ObjForm()
     if form.is_submitted():
         obj_to_find = request.form
         return render_template('autonomous.html', obj_to_find=obj_to_find)
     return render_template('index.html', form=form)
+
+
+@app.route('/submit', methods=['GET'])
+def submit():
+    return render_template('autonomous.html', obj_to_find=obj_to_find)
 
 
 @app.route('/manual')
