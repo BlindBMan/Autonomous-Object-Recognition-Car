@@ -3,7 +3,7 @@ from pi_camera import Camera
 import serial
 
 app = Flask(__name__)
-pipe = serial.Serial('/dev/rfcomm0', 9600)
+# pipe = serial.Serial('/dev/rfcomm0', 9600)
 
 
 def gen_img(camera):
@@ -11,6 +11,12 @@ def gen_img(camera):
         frame = camera.get_frame()
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+
+
+def gen2(camera):
+    while True:
+        frame = camera.get_frame()
+        yield frame
 
 
 @app.route('/')
@@ -24,29 +30,42 @@ def video_feed():
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
+@app.route('/image.jpg')
+def image():
+    return Response(gen2(Camera()),
+                    mimetype='image/jpeg')
+
+
+@app.route('/found/')
+def found():
+    print('found object')
+    # pipe.write('X')
+    return '0'
+
+
 @app.route('/left/')
 def left():
-    pipe.write('L\n')
+    # pipe.write('L\n')
     return '0'
 
 
 @app.route('/right/')
 def right():
-    pipe.write('R\n')
+    # pipe.write('R\n')
     return '0'
 
 
 @app.route('/forward/')
 def forward():
-    pipe.write('F\n')
+    # pipe.write('F\n')
     return '0'
 
 
 @app.route('/backward/')
 def backward():
-    pipe.write('B\n')
+    # pipe.write('B\n')
     return '0'
 
 
 if __name__ == '__main__':
-    app.run(threaded=True)
+    app.run(host='0.0.0.0', threaded=True)
