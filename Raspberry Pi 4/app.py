@@ -18,9 +18,8 @@ def gen_img(camera):
 
 
 def gen2(camera):
-    while True:
-        frame = camera.get_frame()
-        yield frame
+    frame = camera.get_frame()
+    yield frame
 
 
 @app.route('/', methods=['GET', 'POST'])

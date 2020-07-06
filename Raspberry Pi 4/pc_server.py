@@ -17,24 +17,25 @@ tfnet = TFNet(options)
 
 
 def send_signal():
-    requests.get('http://192.168.1.5:5000/found', timeout=5)
+    requests.get('http://192.168.1.2:5000/found', timeout=5)
 
 
 def main():
     obj_list = open('labels.txt', 'r').read().split('\n')
-    subm = requests.get('http://127.0.0.1:5000/submit', timeout=5)
+    subm = requests.get('http://192.168.1.2:5000/submit', timeout=5)
     while subm.status_code != 200:
         time.sleep(1)
-        subm = requests.get('http://127.0.0.1:5000/submit', timeout=5)
+        subm = requests.get('http://192.168.1.2:5000/submit', timeout=5)
     txt = subm.text
     target = [i for i in obj_list if txt.find(i) > 0][0]
+    print(target)
     obj_detect(target)
 
 
 def obj_detect(target):
     found = 0
-    while found != 1:
-        r = requests.get('http://192.168.1.2:5000/image.jpg', timeout=5)
+    while found == 0:
+        r = requests.get('http://192.168.1.2:5000/image2.jpg', timeout=5)
         if r.status_code == 200:
             curr_img = Image.open(BytesIO(r.content))
             curr_img_cv2 = cv2.cvtColor(np.array(curr_img), cv2.COLOR_RGB2BGR)

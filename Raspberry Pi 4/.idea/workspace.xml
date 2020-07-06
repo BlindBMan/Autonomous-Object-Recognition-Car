@@ -2,7 +2,52 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="857a9aca-6433-48ea-b781-76cd43c543c2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/cli.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/cython_utils/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/cython_utils/cy_yolo2_findboxes.pyx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/cython_utils/cy_yolo_findboxes.pyx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/cython_utils/nms.pxd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/cython_utils/nms.pyx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/dark/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/dark/connected.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/dark/convolution.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/dark/darknet.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/dark/darkop.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/dark/layer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/defaults.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/net/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/net/build.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/net/flow.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/net/framework.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/net/help.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/net/mnist/run.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/net/ops/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/net/ops/baseop.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/net/ops/convolution.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/net/ops/simple.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/net/vanilla/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/net/vanilla/train.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/net/yolo/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/net/yolo/data.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/net/yolo/misc.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/net/yolo/predict.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/net/yolo/train.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/net/yolov2/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/net/yolov2/data.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/net/yolov2/predict.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/net/yolov2/train.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/utils/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/utils/box.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/utils/im_transform.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/utils/loader.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/utils/pascal_voc_clean_xml.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/utils/process.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/darkflow/version.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/darkflow/labels.txt" beforeDir="false" afterPath="$PROJECT_DIR$/darkflow/labels.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pc_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/pc_server.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,6 +82,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1YUvJRDvttcoM8001kFm7XvqD6r" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -61,6 +107,35 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="pc_server" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CameraServer" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pc_server.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.pc_server" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -77,7 +152,8 @@
       <workItem from="1593382460520" duration="251000" />
       <workItem from="1593471963205" duration="4506000" />
       <workItem from="1593644764235" duration="1250000" />
-      <workItem from="1594000726609" duration="4978000" />
+      <workItem from="1594000726609" duration="6489000" />
+      <workItem from="1594046869366" duration="5029000" />
     </task>
     <servers />
   </component>
@@ -96,5 +172,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Raspberry_Pi_4$pc_server.coverage" NAME="pc_server Coverage Results" MODIFIED="1594048050574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
